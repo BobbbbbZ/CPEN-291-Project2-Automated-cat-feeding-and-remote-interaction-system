@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:linen;">
+<head>
+
+    <meta  charset="utf-8">
+
+
+    <title>
+        Project 2 G14
+    </title>
+    <!--this is the quick start CSS link of bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+
+        .headericon{
+            margin-bottom: 10px;
+        }
+
+
+        .overallheader{
+            display: flex;
+            background-color: #b58037;
+            height: 60px;
+            margin-bottom: 15px
+
+        }
+
+        .flex-container > div {
+          background-color: green;
+          width: 100px;
+          margin: 10px;
+          text-align: center;
+          line-height: 75px;
+          font-size: 30px;
+        }
+
+        .headertext {
+            vertical-align: middle;
+            font-size: 20px;
+            font-family: "Times New Roman", Times, serif;
+            margin-left: 35px;
+        }
+
+        img {
+            width:100px;
+            height: 100px;
+            border-radius: 50px;
+            float: left
+            margin-right: 100px;
+            margin-left: 70px;
+
+
+        }
+
+        .button{
+
+            display: inline-block;
+        }
+
+
+
+        button {
+            background-color: white;
+            border-color: grey;
+            border-style: solid;
+            border-width: 3px;
+            height: 50px;
+            width: 300px;
+
+            color:  #212427;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 15px;
+
+            transition: opacity 0.1s; background-color 0.3s;
+        }
+
+        button:hover{
+            background-color: grey;
+            color: white;
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+        }
+
+        button:active{
+            opacity: 0.7;
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+        }
+
+        .controls {
+            width: 400px;
+        }
+
+        .form-group{
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+        /* The switch - the box around the slider */
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 60px;
+          height: 34px;
+        }
+
+        /* Hide default HTML checkbox */
+        .switch input {
+          opacity: 0;
+          width: 0;
+          height: 0;
+        }
+
+        /* The slider */
+        .slider {
+          position: absolute;
+          cursor: pointer;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #ccc;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        .slider:before {
+          position: absolute;
+          content: "";
+          height: 26px;
+          width: 26px;
+          left: 4px;
+          bottom: 4px;
+          background-color: white;
+          -webkit-transition: .4s;
+          transition: .4s;
+        }
+
+        input:checked + .slider {
+          background-color: #2196F3;
+        }
+
+        input:focus + .slider {
+          box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked + .slider:before {
+          -webkit-transform: translateX(26px);
+          -ms-transform: translateX(26px);
+          transform: translateX(26px);
+        }
+
+        .videostream{
+            width: 50;
+            margin-left: 300px;
+        }
+
+        table{
+            margin-left: 15px;
+        }
+        /* Rounded sliders */
+        .slider.round {
+          border-radius: 34px;
+        }
+
+        .slider.round:before {
+          border-radius: 50%;
+        }
+
+        .videocontainer{
+            display: flex;
+        }
+    </style>
+</head>
+
+
+<body>
+
+<hr>
+
+<div class="headericon">
+    <img src="https://media.istockphoto.com/id/1324471626/vector/dog-love-simple-logo.jpg?s=612x612&w=0&k=20&c=U7PzRbOpk9MVCVIfT3ONvnFbcOnpzmQM7eIAWGNy1ok=">
+
+</div>
+
+<div class="overallheader">
+
+
+    <div style = "align-self: center;font-size: 20px; margin-left: 35px; " class="headertext">
+         THE PET MONITOR
+    </div>
+
+
+    <div style= "align-self: center; flex: 30%; margin-left: 10%" class="headerbutton">
+        <a href="/setting"><button style="width:130px; height : 40px">Set Schedule</button>
+    </a>
+    </div>
+
+    <div style= "align-self: center; flex: 30%" class="headerbuttontwo">
+        <a href="/history"><button style="width:100px; height : 40px"  name="history" value="history">History</button></a>
+    </div>
+
+
+</div>
+
+
+<div class="videocontainer">
+    <div class ="videostream">
+
+        <iframe width="560" height="315" src="ipcameraaddress" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    </div>
+
+    <div>
+        <table>
+            <tr>
+                <th>Scheduled Feed Time</th>
+            </tr>
+            <tr>
+                <td>{{sfeed1time}}</td>
+            </tr>
+            <tr>
+                <td>{{sfeed2time}}</td>
+            </tr>
+            <tr>
+                <td>{{sfeed3time}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<hr>
+
+<div style = "font-size: 20px;width: 560px; margin: auto; margin-bottom: 15px" class="headertext">
+    Controls
+
+</div>
+<form method="POST" action="/">
+<div style="margin: auto" class="controls">
+    <button name="schedule" type="submit" value="schedule">Schedule</button>
+    <button name="feed" type="submit" value="feed">Feed</button>
+    <button name="clean" value="clean" type="submit">Clean</button>
+    <button onclick="myFunction()" name="play" id="play" type="submit" value="play">Play</button>
+  <label class="switch">
+    <input id="myCheckbox" type="checkbox">
+    <span class="slider round"></span>
+  </label>
+</div>
+</form>
+<hr>
+
+<form>
+    <div class = "form-group">     <p>Sign up for Email notification:</p>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Confirm Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Notification Frequency
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Real Time</a>
+            <a class="dropdown-item" href="#">Hourly</a>
+            <a class="dropdown-item" href="#">Daily</a>
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="form-group">Submit</button>
+    </div>
+</form>
+<script>
+    function myFunction() {
+        let checkBox = document.getElementById("myCheckbox");
+        if (checkBox.checked === true) {
+            document.getElementById("play").value = "play on"
+        }
+        else {
+            document.getElementById("play").value = "play off"
+        }
+    }
+
+</script>
+
+<hr>
+<p> "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+</p>
+
+    <!--this is the quick start javascript link of bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+
+</html>
+

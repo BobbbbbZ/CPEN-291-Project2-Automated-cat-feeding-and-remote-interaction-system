@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<body style="background-color:linen;">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .headericon{
+            margin-bottom: 10px;
+        }
+
+
+        .overallheader{
+            display: flex;
+            background-color: #b58037;
+            height: 60px;
+            margin-bottom: 15px
+
+        }
+
+        .flex-container > div {
+          background-color: green;
+          width: 100px;
+          margin: 10px;
+          text-align: center;
+          line-height: 75px;
+          font-size: 30px;
+        }
+
+        .headertext {
+            vertical-align: middle;
+            font-size: 20px;
+            font-family: "Times New Roman", Times, serif;
+            margin-left: 35px;
+        }
+
+        img {
+            width:100px;
+            height: 100px;
+            border-radius: 50px;
+            float: left
+            margin-right: 100px;
+            margin-left: 70px;
+
+
+        }
+
+        .button{
+
+            display: inline-block;
+        }
+
+
+
+        button {
+            background-color: white;
+            border-color: grey;
+            border-style: solid;
+            border-width: 3px;
+            height: 50px;
+            width: 100px;
+
+            color:  #212427;
+            cursor: pointer;
+            margin-right: 10px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 15px;
+
+            transition: opacity 0.1s; background-color 0.3s;
+
+
+        }
+
+
+
+
+        button:hover{
+            background-color: grey;
+            color: white;
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+        }
+
+        button:active{
+            opacity: 0.7;
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.15);
+
+
+
+        }
+
+        .controls {
+            width: 400px;
+
+        }
+
+
+
+        .form-group{
+            margin: auto;
+            width: 50%;
+            padding: 10px;
+        }
+
+        .flex-container {
+          display: flex;
+          justify-content: center;
+          margin-bottom: 15px;
+
+        }
+
+        .timeselect {
+          display: flex;
+          justify-content: center;
+
+        }
+
+        ul, ol {
+          list-style-type: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<hr>
+
+<div class="headericon">
+    <img src="https://media.istockphoto.com/id/1324471626/vector/dog-love-simple-logo.jpg?s=612x612&w=0&k=20&c=U7PzRbOpk9MVCVIfT3ONvnFbcOnpzmQM7eIAWGNy1ok=">
+</div>
+
+
+
+<div class="overallheader">
+
+    <div style = "align-self: center;font-size: 20px; margin-left: 35px; " class="headertext">
+        THE PET MONITOR
+
+    </div>
+
+    <div style= "align-self: center; flex: 30%; margin-left: 10%" class="headerbutton">
+        <a href="/"><button style="width:100px; height : 40px">  Back </button><a/>
+    </div>
+
+    <div style= "align-self: center; flex: 30%" class="headerbuttontwo">
+        <a href="/history"><button style="width:100px; height : 40px">  History </button><a/>
+    </div>
+</div>
+
+<div class="flex-container">
+
+    <button onclick="addTime()">Add Time</button>
+    <button onclick="deleteTime()">Delete Time</button>
+</div>
+
+<div class = "timeselect">
+    <form id="myForm" name="myForm" action="" method="post">
+        <ul id="timeList">
+            <li>
+                <label for="time1">feed at: </label>
+                <input type="time" id="time1" name="time1" min="00:00" max="24:00" required>
+            </li>
+        </ul>
+        <label for="feedAmount">Set Max food quntity in gram</label>
+        <input type="number" name="feedAmount" id="feedAmount" min="0" max="2000" required>
+        <input type="hidden" id="numberOfTimes" name="numberOfTimes" value="1" required>
+        <br>
+        <button style="margin-left:70px; margin-top:15px" type="submit" name='submit_button' value='Submit' class="form-group">Submit</button>
+    </form>
+
+
+</div>
+
+</body>
+<script>
+    function addTime() {
+        let number = document.myForm.numberOfTimes.value
+        if(number >= 3) {
+            alert("You can't click me anymore");
+            return;
+        }
+        document.myForm.numberOfTimes.value = (parseInt(number) + 1).toString()
+        number = document.myForm.numberOfTimes.value
+        document.getElementById("numberOfTimes").innerHTML = (number + 1).toString();
+        var list = document.getElementById("timeList");
+        var li = document.createElement("li");
+        var lable = document.createElement("lable");
+        var input = document.createElement("input");
+
+        lable.appendChild(document.createTextNode("feed at: "));
+        lable.setAttribute("for", "time"+ number.toString())
+        input.setAttribute("name", "time"+ number.toString());
+        input.setAttribute("type", "time");
+        input.setAttribute("id", "time"+ number.toString());
+        input.setAttribute("min", "00:00");
+        input.setAttribute("max", "24:00");
+        input.setAttribute("required", "required");
+
+        li.append(lable);
+        li.append(input);
+        list.append(li);
+    }
+    function deleteTime() {
+        let number = document.myForm.numberOfTimes.value
+        if(number <= 1) {
+            alert("You can't click me anymore");
+            return;
+        }
+        document.myForm.numberOfTimes.value = (parseInt(number) - 1).toString()
+        let list = document.getElementById("timeList");
+        if (list.firstChild) {
+            let child = document.getElementById("timeList").lastChild;
+            list.removeChild(child)
+        }
+    }
+</script>
+</html>
